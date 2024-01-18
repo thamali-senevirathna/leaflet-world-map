@@ -1,15 +1,15 @@
 import React,{ Component } from "react";
 
 class WorldMap extends Component{
-state ={
+state ={};
     render(){
         return(
             <div>
-                <h1>The World</h1>
+                <h1 style={{position:"absolute",top:"0%",left:"45%",fontSize:"1.8rem"}}>The World</h1>
             </div>
         );
     }
-}
+
 }
 
 export default WorldMap;
