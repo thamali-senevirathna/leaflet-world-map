@@ -1,6 +1,6 @@
 import React,{ Component } from "react";
 import countries from "./../data/countries.json";
-
+import "leaflet/dist/leaflet.css";
 class WorldMap extends Component{
 state ={};
 
