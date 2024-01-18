@@ -1,4 +1,5 @@
 import React,{ Component } from "react";
+import countries from "./../data/countries.json";
 
 class WorldMap extends Component{
 state ={};
