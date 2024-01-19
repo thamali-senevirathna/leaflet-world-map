@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { MapContainer, GeoJSON } from "react-leaflet";
 import mapData from "./../data/countries.json";
-import "./../../node_modules/leaflet/dist/leaflet.css";
+import "leaflet/dist/leaflet.css";
+import "./Worldmap.css";
 
 interface GeoJSONData{
   features: any[];
