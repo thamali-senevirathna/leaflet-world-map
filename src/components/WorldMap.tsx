@@ -8,6 +8,11 @@ interface GeoJSONData {
   features: any[];
 }
 class WorldMap extends Component {
+  state = {};
+
+  color = ["#be2edd","#badc58","#3498db","#ffbe76","#6D214F"];
+
+
   [x: string]: any;
   componentDidMount() {
     console.log(mapData);
@@ -19,14 +24,14 @@ class WorldMap extends Component {
     weight: 0.7,
     dashArray: 1,
   };
-   onClickedCountry = (event: any) => {
-    console.log("Clicked..");
+   onClickedCountryMassage = (event: any) => {
+    console.log( "Clicked..");
    }
 
-   onMouseOverCountry = (event:any) =>{
+   onCountryChangeColor = (event:any) =>{
     event.target.setStyle({
-      color:"red",
-      fillColor:"yellow",
+      color:"#FC427B",
+      fillColor:"red",
       fillOpacity:0.4,
      })
    }
@@ -34,10 +39,13 @@ class WorldMap extends Component {
     const countryName = country.properties.ADMIN;
     console.log(countryName);
     layer.bindPopup(countryName);
-   
+
+   layer.options.fillOpacity = Math.random();
+//   const colorIndex = Math.floor(Math.random() * this.color.length);
+// layer.options.fillColor = this.color[colorIndex];
+
     layer.on({
-    click: this.onClickedCountry,
-      mouseover:this.onMouseOverCountry,
+    click: this.onCountryChangeColor,
     });
   };
 
@@ -47,15 +55,15 @@ class WorldMap extends Component {
         <h1
           style={{
             textAlign: "center",
-            fontSize: "1.1rem",
-            marginTop: "0%",
-            paddingBottom: "1%",
+            fontSize: "1rem",
+            position:"absolute",
+marginTop:"-21%"
           }}
         >
           The Map
         </h1>
         <MapContainer
-          style={{ height: "85vh", width: "90vw" }}
+          style={{ height: "85vh", width: "85vw",right:"8%",position:"absolute",bottom:"6%" }}
           zoom={2}
           center={[2, 100]}
         >
@@ -65,6 +73,7 @@ class WorldMap extends Component {
             onEachFeature={this.onEachCountry}
           />
         </MapContainer>
+        <input type="color" style={{position:"absolute",bottom:"3%",left:"0.99%"}}/>
       </div>
     );
   }
