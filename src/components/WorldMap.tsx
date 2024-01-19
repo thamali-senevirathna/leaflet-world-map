@@ -8,7 +8,7 @@ interface GeoJSONData {
   features: any[];
 }
 class WorldMap extends Component {
-  state = {};
+  state = { color:"#ffff00"};
 
   color = ["#be2edd","#badc58","#3498db","#ffbe76","#6D214F"];
 
@@ -73,7 +73,7 @@ marginTop:"-21%"
             onEachFeature={this.onEachCountry}
           />
         </MapContainer>
-        <input type="color" style={{position:"absolute",bottom:"3%",left:"0.99%"}}/>
+        <input type="color" value={this.state.color} style={{position:"absolute",bottom:"3%",left:"0.99%"}}/>
       </div>
     );
   }
