@@ -31,8 +31,8 @@ class WorldMap extends Component {
    onCountryChangeColor = (event:any) =>{
     event.target.setStyle({
       color:"#FC427B",
-      fillColor:"red",
-      fillOpacity:0.4,
+      fillColor:this.state.color,
+      fillOpacity:1,
      })
    }
   onEachCountry = (country: any, layer: any) => {
