@@ -25,8 +25,12 @@ class WorldMap extends Component {
     layer.bindPopup(countryName);
    
     layer.on({
-      click:(event)=>{
-        console.log("Click");
+      click:(event: any)=>{
+       event.target.setStyle({
+        color:"red",
+        fillColor:"yellow",
+        fillOpacity:0.4,
+       })
         
       }
     });
