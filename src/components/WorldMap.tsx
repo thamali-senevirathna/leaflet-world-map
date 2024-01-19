@@ -20,7 +20,9 @@ class WorldMap extends Component {
   };
 
   onEachCountry = (country: any, layer: any) => {
-    console.log(country.properties.ADMIN);
+    const countryName = country.properties.ADMIN;
+    console.log(countryName);
+    layer.bindPopup(countryName);
   };
 
   render() {
