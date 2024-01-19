@@ -1,12 +1,9 @@
-import React from 'react';
-import './App.css'
-import WorlMap from './components/WorlMap';
+import React from "react";
+import "./App.css";
+import WorlMap from "./components/WorldMap";
 
 function App() {
-
-  return (
-  <WorlMap/>
-  );
+  return <WorMap />;
 }
 
-export default App
+export default App;
