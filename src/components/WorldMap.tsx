@@ -49,6 +49,10 @@ class WorldMap extends Component {
     });
   };
 
+colorChange = (event:any) =>{
+this.setState({color: event.target.value})
+}
+
   render() {
     return (
       <div>
@@ -73,7 +77,7 @@ marginTop:"-21%"
             onEachFeature={this.onEachCountry}
           />
         </MapContainer>
-        <input type="color" value={this.state.color} style={{position:"absolute",bottom:"3%",left:"0.99%"}}/>
+        <input type="color" value={this.state.color} onChange={this.colorChange} style={{position:"absolute",bottom:"3%",left:"0.99%"}}/>
       </div>
     );
   }
