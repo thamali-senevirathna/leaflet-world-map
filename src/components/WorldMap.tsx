@@ -25,7 +25,7 @@ class WorldMap extends Component {
     layer.bindPopup(countryName);
    
     layer.on({
-      click:(event: any)=>{
+      mouseover:(event: any)=>{
        event.target.setStyle({
         color:"red",
         fillColor:"yellow",
