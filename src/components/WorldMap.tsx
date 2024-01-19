@@ -23,6 +23,13 @@ class WorldMap extends Component {
     const countryName = country.properties.ADMIN;
     console.log(countryName);
     layer.bindPopup(countryName);
+   
+    layer.on({
+      click:(event)=>{
+        console.log("Click");
+        
+      }
+    });
   };
 
   render() {
