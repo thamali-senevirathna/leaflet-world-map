@@ -8,6 +8,7 @@ interface GeoJSONData {
   features: any[];
 }
 class WorldMap extends Component {
+  [x: string]: any;
   componentDidMount() {
     console.log(mapData);
   }
@@ -18,21 +19,25 @@ class WorldMap extends Component {
     weight: 0.7,
     dashArray: 1,
   };
+   onClickedCountry = (event: any) => {
+    console.log("Clicked..");
+   }
 
+   onMouseOverCountry = (event:any) =>{
+    event.target.setStyle({
+      color:"red",
+      fillColor:"yellow",
+      fillOpacity:0.4,
+     })
+   }
   onEachCountry = (country: any, layer: any) => {
     const countryName = country.properties.ADMIN;
     console.log(countryName);
     layer.bindPopup(countryName);
    
     layer.on({
-      mouseover:(event: any)=>{
-       event.target.setStyle({
-        color:"red",
-        fillColor:"yellow",
-        fillOpacity:0.4,
-       })
-        
-      }
+    click: this.onClickedCountry,
+      mouseover:this.onMouseOverCountry,
     });
   };
 
