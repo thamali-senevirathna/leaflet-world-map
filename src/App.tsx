@@ -1,9 +1,9 @@
 import React from "react";
 import "./App.css";
-import WorlMap from "./components/WorldMap";
+import WorldMap from "./components/WorldMap";
 
 function App() {
-  return <WorMap />;
+  return <WorldMap/>
 }
 
 export default App;
