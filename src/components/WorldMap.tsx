@@ -1,3 +1,5 @@
+
+
 import React, { Component } from "react";
 import { MapContainer, GeoJSON, FeatureGroup, LayerGroup } from "react-leaflet";
 import mapData from "./../data/countries.json";
@@ -8,15 +10,18 @@ interface GeoJSONData {
   features: any[];
 }
 class WorldMap extends Component {
+
+
   state = { color:"#ffff00"};
 
-  color = ["#be2edd","#badc58","#3498db","#ffbe76","#6D214F"];
+  // color = ["#be2edd","#badc58","#3498db","#ffbe76","#6D214F"];
 
 
   [x: string]: any;
   componentDidMount() {
     console.log(mapData);
   }
+
   countryStyle = {
     fillColor: "green",
     fillOpacity: 0.8,
@@ -52,6 +57,7 @@ class WorldMap extends Component {
 colorChange = (event:any) =>{
 this.setState({color: event.target.value})
 }
+
 
   render() {
     return (
