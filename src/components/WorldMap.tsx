@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import { MapContainer, GeoJSON } from "react-leaflet";
 import mapData from "./../data/countries.json";
 import "leaflet/dist/leaflet.css";
@@ -27,6 +27,15 @@ class WorldMap extends Component {
     });
   };
 
+  onCountryClick = (event: any) => {
+    const countryName = event.target.feature.properties.ADMIN;
+    if (countryName === "Sri Lanka") {
+      const map = this.mapRef.current;
+      const layer = event.target;
+      map.fitBounds(layer.getBounds());
+    }
+  };
+
   onEachCountry = (country: any, layer: any) => {
     const countryName = country.properties.ADMIN;
     console.log(countryName);
@@ -36,12 +45,15 @@ class WorldMap extends Component {
     layer.on({
       mouseover: this.onCountryMouseOver,
       mouseout: this.onCountryMouseOut,
+      click: this.onCountryClick,
     });
   };
 
   colorChange = (event: any) => {
     this.setState({ color: event.target.value });
   };
+
+  mapRef = React.createRef();
 
   render() {
     return (
@@ -58,6 +70,7 @@ class WorldMap extends Component {
         </h1>
 
         <MapContainer
+          ref={this.mapRef}
           style={{
             height: "85vh",
             width: "85vw",
