@@ -1,6 +1,6 @@
-import  { Component } from "react";
+import { Component } from "react";
 import { MapContainer, GeoJSON } from "react-leaflet";
-import  mapData from "./../data/countries.json";
+import mapData from "./../data/countries.json";
 import "leaflet/dist/leaflet.css";
 import "./Worldmap.css";
 
@@ -9,29 +9,35 @@ interface GeoJSONData {
 }
 
 class WorldMap extends Component {
-
   state = { color: "#ffff00" };
 
-  // color = ["#be2edd","#badc58","#3498db","#ffbe76","#6D214F"];
-
-  onCountryMouseOver = (event: any) =>{
-event.target.setStyle({
-  color:"#FC427B",
-  fillColor:this.state.color,
-  fillOpacity:1,
-})
-  };
-  onCountryMouseOut=(event: any) =>{
+  onCountryMouseOver = (event: any) => {
     event.target.setStyle({
-      color:"black",
-      fillcolor:"green",
-      fillOpacity:0.8,
-    })
+      color: "#FC427B",
+      fillColor: this.state.color,
+      fillOpacity: 1,
+    });
   };
 
- 
+  onCountryMouseOut = (event: any) => {
+    event.target.setStyle({
+      color: "black",
+      fillColor: "green",
+      fillOpacity: 0.8,
+    });
+  };
 
+  onEachCountry = (country: any, layer: any) => {
+    const countryName = country.properties.ADMIN;
+    console.log(countryName);
+    layer.bindPopup(countryName);
+    layer.options.fillOpacity = Math.random();
 
+    layer.on({
+      mouseover: this.onCountryMouseOver,
+      mouseout: this.onCountryMouseOut,
+    });
+  };
 
   colorChange = (event: any) => {
     this.setState({ color: event.target.value });
@@ -50,7 +56,7 @@ event.target.setStyle({
         >
           The Map
         </h1>
-   
+
         <MapContainer
           style={{
             height: "85vh",
@@ -62,9 +68,14 @@ event.target.setStyle({
           zoom={2}
           center={[2, 100]}
         >
-       
           <GeoJSON
-            style={this.countryStyle}
+            style={{
+              fillColor: "green",
+              fillOpacity: 0.8,
+              color: "black",
+              weight: 0.7,
+              dashArray: 1,
+            }}
             data={mapData as GeoJSONData}
             onEachFeature={this.onEachCountry}
           />
@@ -81,5 +92,4 @@ event.target.setStyle({
   }
 }
 
-// Exporting the WorldMap component as the default export
 export default WorldMap;
