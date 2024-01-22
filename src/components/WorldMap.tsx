@@ -14,19 +14,19 @@ class WorldMap extends Component {
 
   // color = ["#be2edd","#badc58","#3498db","#ffbe76","#6D214F"];
 
-  onCountryMouseOver = (event: any){
+  onCountryMouseOver = (event: any) =>{
 event.target.setStyle({
   color:"#FC427B",
   fillColor:this.state.color,
   fillOpacity:1,
 })
   };
-  countryStyle = {
-    fillColor: "green",
-    fillOpacity: 0.8,
-    color: "black",
-    weight: 0.7,
-    dashArray: 1,
+  onCountryMouseOut=(event: any) =>{
+    event.target.setStyle({
+      color:"black",
+      fillcolor:"green",
+      fillOpacity:0.8,
+    })
   };
 
  
